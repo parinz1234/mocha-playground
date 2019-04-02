@@ -1,7 +1,7 @@
 const promiseMd5 = require('../promise-md5')
 const expect = require('chai').expect
 
-describe('#promiseMd5() ( async / await )', () => {
+describe('#asyncPromiseMd5() ( async / await )', () => {
     context('with string argument', () => {
         it('should compute MD5 hash', async () => {
             const hash = await promiseMd5('Glad Chinda')
@@ -14,11 +14,11 @@ describe('#promiseMd5() ( async / await )', () => {
 
     context('with non-string argument', () => {
         it('should throw an error', async () => {
-            promiseMd5(12345)
-                .catch(err => {
-                    expect(() => { throw err })
-                        .to.throw(TypeError, 'Data must be a string or a buffer')
-                })
+            try {
+                const hash = await promiseMd5(12345)
+            } catch(err) {
+                expect(() => { throw err }).to.throw(TypeError, 'Data must be a string or a buffer')
+            }
         })
     })
 })
