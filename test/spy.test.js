@@ -1,8 +1,8 @@
-const runCallback  = require('../spy')
+const runCallback  = require('../src/spy')
 const sinon = require('sinon')
 const expect = require('chai').expect
 
-describe('Shoud return spy correctly', () => {
+describe('spy', () => {
     it('Shoud return spy correctly', () => {
         const spyCallBack = sinon.spy()
         runCallback(spyCallBack)
